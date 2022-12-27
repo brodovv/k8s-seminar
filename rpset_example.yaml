@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: replica-example
+  labels:
+    app:spring
+    tied:fe
+spec:
+  replicas:3
+  selector:
+    matchLabels:
+      tier:frontend
+  template:
+    metadata:
+      labels:
+        tier:trontend     
+    spec:
+      containers:
+      - name: app1
+          image: supergiantkir/animals:bear
+        volumeMounts:
+        - name: tmp-dir
+          mountPath: /storage
+
+        - name: app2
+          image: yanivomc/spring-music:latest
+        volumeMounts:
+        - name: tmp-dir
+          mountPath: /storage
+    volumes:
+      - name: tmp-dir
+        emptyDir: {}
