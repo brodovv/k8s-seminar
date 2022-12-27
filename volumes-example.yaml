@@ -16,5 +16,5 @@ spec:
     - name: tmp-dir
       mountPath: /storage
   volumes:
-  - name: tmp-dir
-    emptyDir: {}
+    - name: tmp-dir
+      emptyDir: {}
