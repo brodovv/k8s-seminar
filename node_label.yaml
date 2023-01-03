@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: frontend
+  labels:
+    app: spring
+    tier: fe
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        tier: frontend
+    spec:
+      containers:
+      - name: spring
+        image: yanivomc/spring-music:latest
+      nodeSelector:
+        env: prod
+        
+# kubectl label nodes/i-02efedd0ff81da788 env=prod
